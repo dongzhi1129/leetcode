@@ -1,5 +1,10 @@
 package com.leetcode.algorithm;
 
+import java.util.Arrays;
+import java.util.Map;
+
+import com.google.common.collect.Maps;
+
 /**
  * 
  * Given an array of integers, return indices of the two numbers such that they
@@ -39,6 +44,48 @@ public class TowSumFunction {
 		}
 		return result;
 
+	}
+
+	public static int[] toSumOtherSolution(int[] nums, int target) {
+		int[] result = new int[2];
+		int length = 0;
+		if (nums == null || (length = nums.length) <= 0) {
+			return nums;
+		}
+		Map<Integer, Integer> maps = Maps.newHashMap();
+		for (int i = 0; i < length; i++) {
+			maps.put(nums[i], i);
+		}
+		for (int j = 0; j < length; j++) {
+			int diff = target - nums[j];
+			if(maps.containsKey(diff)) {
+				result[0]=j;
+				result[1]=maps.get(diff);
+				break;
+			}
+		}
+		return result;
+	}
+	
+	public static int[] toSumOtherSolutionPlus(int[] nums, int target) {
+		int[] result = new int[2];
+		int length = 0;
+		if (nums == null || (length = nums.length) <= 0) {
+			return nums;
+		}
+		Map<Integer, Integer> maps = Maps.newHashMap();
+		for (int j = 0; j < length; j++) {
+			int diff = target - nums[j];
+			if(maps.containsKey(diff)) {
+				result[0]=j;
+				result[1]=maps.get(diff);
+				Arrays.sort(result);
+				break;
+			} else {
+				maps.put(nums[j], j);
+			}
+		}
+		return result;
 	}
 
 }
