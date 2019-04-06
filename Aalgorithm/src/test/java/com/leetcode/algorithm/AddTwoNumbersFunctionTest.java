@@ -37,7 +37,76 @@ public class AddTwoNumbersFunctionTest {
 		}
 		assertTrue(true);
 	}
-
+	
+	@Test
+	@Parameters(source=TestCaseProvider.class)
+	public void testAddTwoNumbers1(ListNode list1,ListNode list2) {
+		ListNode ls = new ListNode(2);
+		ListNode ls01 = new ListNode(4);
+		ls.next = ls01;
+		ListNode ls02 = new ListNode(3);
+		ls01.next = ls02;
+		ls02.next = null;
+		
+		ListNode ls2 = new ListNode(5);
+		ListNode ls201 = new ListNode(6);
+		ls2.next = ls201;
+		ListNode ls202 = new ListNode(4);
+		ls201.next = ls202;
+		ls202.next = null;
+		
+		ListNode l3 =AddTwoNumbersFunction.addTwoNumbers(ls, ls2);
+		while(l3 != null) {
+			System.out.print(l3.val+"-->");
+			l3 = l3.next;
+		}
+		assertTrue(true);
+	}
+	@Test
+	@Parameters(source=TestCaseProvider.class)
+	public void testAddTwoNumbersplus(ListNode list1,ListNode list2) {
+		ListNode ls = new ListNode(2);
+		ListNode ls01 = new ListNode(4);
+		ls.next = ls01;
+		ListNode ls02 = new ListNode(3);
+		ls01.next = ls02;
+		ls02.next = null;
+		
+		ListNode ls2 = new ListNode(5);
+		ListNode ls201 = new ListNode(6);
+		ls2.next = ls201;
+		ListNode ls202 = new ListNode(4);
+		ls201.next = ls202;
+		ls202.next = null;
+		
+		ListNode l3 =AddTwoNumbersFunction.addTwoNumbersPlus(ls, ls2);
+		while(l3 != null) {
+			System.out.println(l3.val+"-->");
+			l3 = l3.next;
+		}
+		assertTrue(true);
+	}
+	
+	
+	
+	public static class TestCaseProvider {
+		public static Object[] provideCase1() {
+			ListNode ls = new ListNode(2);
+			ListNode ls01 = new ListNode(4);
+			ls.next = ls01;
+			ListNode ls02 = new ListNode(3);
+			ls01.next = ls02;
+			ls02.next = null;
+			
+			ListNode ls2 = new ListNode(5);
+			ListNode ls201 = new ListNode(6);
+			ls2.next = ls201;
+			ListNode ls202 = new ListNode(4);
+			ls201.next = ls202;
+			ls202.next = null;
+            return new Object[]{new Object[]{ls,ls2}};
+        }
+	}
 	private Object testCase() {
 		ListNode ls = new ListNode(2);
 		ListNode ls01 = new ListNode(4);

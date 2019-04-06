@@ -77,12 +77,39 @@ public class AddTwoNumbersFunction {
 
 	}
 
+	public static ListNode addTwoNumbersPlus(ListNode l1, ListNode l2) {
+		ListNode l1Ptr = l1, l2Ptr = l2, sumHead = null,sumCurrentNode=null;
+		int carray = 0;
+		while (l1Ptr != null || l2Ptr != null) {
+			int l1PtrValue = (l1Ptr == null) ? 0 : l1Ptr.val;
+			int l2PtrValue = (l2Ptr == null) ? 0 : l2Ptr.val;
+			int sum = 0;
+			int sumValue = (carray = (sum = l1PtrValue + l2PtrValue + carray) / 10) == 0 ? sum : sum % 10;
+			ListNode sumNode = new ListNode(sumValue);
+			if(sumCurrentNode == null) {
+				sumHead = sumCurrentNode = sumNode;
+			}else {
+				sumCurrentNode.next=sumNode;
+				sumCurrentNode = sumCurrentNode.next;
+			}
+			l1Ptr = (l1Ptr== null)?null:l1Ptr.next;
+			l2Ptr = (l2Ptr== null)?null:l2Ptr.next;
+			
+		}
+		if(carray > 0 ) {
+			sumCurrentNode.next = new ListNode(carray);
+		}
+		return sumHead;
+
+	}
+
 	public static class ListNode {
 		int val;
 		ListNode next;
 
 		ListNode(int x) {
 			val = x;
+			next = null;
 		}
 	}
 
